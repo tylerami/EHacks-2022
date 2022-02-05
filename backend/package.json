@@ -1,0 +1,11 @@
+{
+  "name": "ehacks2022",
+  "version": "1.0.0",
+  "description": "Backend to manage posts, likes, and comments around startup ideas for western students",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}
