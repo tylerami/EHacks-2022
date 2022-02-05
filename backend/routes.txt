@@ -1,0 +1,21 @@
+
+
+FUNCTIONALITY:
+
+Profile:
+
+- Register an account// POST
+- Login// GET
+
+- Update name// PUT
+- Update bio// PUT
+- Update skills// PUT 
+- Update PP// PUT
+
+Discussion:
+ 
+- Create a post// POST
+- Like a post// PUT
+- Delete a post// DELETE
+- Comment on a post// POST
+
