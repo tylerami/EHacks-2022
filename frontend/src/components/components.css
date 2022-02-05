@@ -1,8 +1,19 @@
-.purpleLarge {
+.tab {
+  width: 100%;
+  border: none;
+  height: 8em;
+  justify-content: space-evenly;
+  display: flex;
+  align-self: center;
 }
 
-.purpleMid {
-}
-
-.greyMid {
+.selectedTab {
+  width: 100%;
+  border: none;
+  height: 8em;
+  justify-content: space-evenly;
+  display: flex;
+  align-self: center;
+  background-color: rgb(255, 214, 214);
+  color: rgb(173, 0, 207);
 }

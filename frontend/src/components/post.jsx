@@ -1,12 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-export class Post extends Component {
-  static propTypes = {};
-
-  render() {
-    return <div></div>;
-  }
+function Post(props) {
+  return (
+    <div className="main">
+      <div className="topRow"></div>
+      <h2 className="title"></h2>
+      <p></p>
+      <div className="bottomRow"></div>
+    </div>
+  );
 }
+
+Post.propTypes = {};
 
 export default Post;
