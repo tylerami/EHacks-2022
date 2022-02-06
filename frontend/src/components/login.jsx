@@ -12,10 +12,10 @@ function Login(props) {
   const [register, setregister] = useState(true);
 
   function registerUser(school, name, email, password) {
-    props.setUid("asdd");
+    props.setUid("Jonathan Hader");
   }
   function login(email, password) {
-    props.setUid("asdd");
+    props.setUid("Tyler Amirault");
   }
 
   return register ? (

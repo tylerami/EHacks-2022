@@ -17,45 +17,48 @@ function Dashboard(props) {
   const [tab, settab] = useState("Pitch Discussions");
   const [dropDown, setdropDown] = useState(false);
   const [postList, setpostList] = useState([]);
+  const [title, settitle] = useState("");
+  const [body, setbody] = useState("");
 
   function logout() {
     props.setUid(null);
   }
 
-  useEffect(() => {
-    Axios.get("/api/pitch")
+  function loadPitches() {
+    Axios.get("http://localhost:5000/api/pitch")
       .then((response) => {
-        setpostList(
-          response.data.map((val, key) => {
-            return (
-              <Post
-                name={val.name}
-                title={val.title}
-                body={val.body}
-                comments={val.comments}
-                likes={val.likes}
-              />
-            );
-          })
-        );
+        console.log(response.data);
+        setpostList(response.data.reverse());
       })
       .catch((err) => {
         console.log(err.toString());
       });
+  }
+
+  useEffect(() => {
+    loadPitches();
   }, []);
 
   function postPitch(name, title, body) {
-    Axios.post("/api/pitch", {
-      name: name,
+    Axios.post("http://localhost:5000/api/pitch", {
+      author: name,
       title: title,
       body: body,
       likes: 0,
       comment: 0,
     })
       .then((response) => {
-        setpostList(
-          <Post name={name} title={title} body={body} comments={[]} likes={0} />
-        );
+        loadPitches(); /* setpostList([
+          <Post
+            user={props.name}
+            name={name}
+            title={title}
+            body={body}
+            comments={[]}
+            likes={0}
+          />,
+          ...postList,
+        ]); */
       })
       .catch((err) => {
         console.log(err.toString());
@@ -83,47 +86,76 @@ function Dashboard(props) {
         </button>
       </div>
       <div className="feed">
-        <input type="text" placeholder="Title your pitch..."></input>
-        <textarea placeholder="Share your latest startup idea..."></textarea>
-        <button className="pitch">PITCH IT </button>
-        <Post
-          name="Jennifer Marshall"
-          title="Mental Health App"
-          body="An app where you get reminded about water intake, meditation, exercise etc..."
-          likes={43}
-          comments={[
-            { name: "Tyler Amirault", comment: "So cool!" },
-            {
-              name: "Jack Cochran",
-              comment: "Would love to discuss this with you",
-            },
-          ]}
-        />
-        <Post
-          name="Jennifer Marshall"
-          title="Mental Health App"
-          body="An app where you get reminded about water intake, meditation, exercise etc..."
-          likes={43}
-          comments={[]}
-        />
-        <Post
-          name="Jennifer Marshall"
-          title="Mental Health App"
-          body="An app where you get reminded about water intake, meditation, exercise etc..."
-          likes={43}
-          comments={[]}
-        />
-        <Post
-          name="Jennifer Marshall"
-          title="Mental Health App"
-          body="An app where you get reminded about water intake, meditation, exercise etc..."
-          likes={43}
-          comments={[]}
-        />
+        <input
+          onChange={(event) => settitle(event.target.value)}
+          type="text"
+          placeholder="Title your pitch..."
+        ></input>
+        <textarea
+          onChange={(event) => setbody(event.target.value)}
+          placeholder="Share your latest startup idea..."
+        ></textarea>
+        <button
+          className="pitch"
+          onClick={() => postPitch(props.name, title, body)}
+        >
+          PITCH IT{" "}
+        </button>
+        {postList.map((val, key) => {
+          return (
+            <Post
+              user={props.name}
+              key={key}
+              name={val.author}
+              title={val.title}
+              body={val.body}
+              likes={val.likes}
+              comments={val.comments}
+              id={val._id}
+            />
+          );
+        })}
       </div>
     </div>
   );
 }
+
+const posts = [
+  <Post
+    name="Jennifer Marshall"
+    title="Mental Health App"
+    body="An app where you get reminded about water intake, meditation, exercise etc..."
+    likes={43}
+    comments={[
+      { name: "Tyler Amirault", comment: "So cool!" },
+      {
+        name: "Jack Cochran",
+        comment: "Would love to discuss this with you",
+      },
+    ]}
+  />,
+  <Post
+    name="Jennifer Marshall"
+    title="Mental Health App"
+    body="An app where you get reminded about water intake, meditation, exercise etc..."
+    likes={43}
+    comments={[]}
+  />,
+  <Post
+    name="Jennifer Marshall"
+    title="Mental Health App"
+    body="An app where you get reminded about water intake, meditation, exercise etc..."
+    likes={43}
+    comments={[]}
+  />,
+  <Post
+    name="Jennifer Marshall"
+    title="Mental Health App"
+    body="An app where you get reminded about water intake, meditation, exercise etc..."
+    likes={43}
+    comments={[]}
+  />,
+];
 
 Dashboard.propTypes = {
   setUid: PropTypes.func,

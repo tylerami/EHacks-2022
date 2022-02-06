@@ -8,7 +8,11 @@ function App() {
 
   return (
     <div className="App">
-      {uid == null ? <Login setUid={setuid} /> : <Dashboard setUid={setuid} />}
+      {uid == null ? (
+        <Login setUid={setuid} />
+      ) : (
+        <Dashboard name={uid} setUid={setuid} />
+      )}
     </div>
   );
 }
