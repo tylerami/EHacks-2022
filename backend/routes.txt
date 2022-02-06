@@ -10,7 +10,6 @@ Profile:
 - Update name// PUT
 - Update bio// PUT
 - Update skills// PUT 
-- Update PP// PUT
 
 Discussion:
  
