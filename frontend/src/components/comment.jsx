@@ -1,12 +1,20 @@
-import React, { Component } from "react";
 import PropTypes from "prop-types";
+import pp from "../logo.png";
 
-export class Comment extends Component {
-  static propTypes = {};
-
-  render() {
-    return <div></div>;
-  }
+function Comment(props) {
+  return (
+    <div>
+      <div className="row">
+        <img src={pp} /> <h2>{props.name}</h2>
+      </div>
+      <p className="commentBody">{props.string}</p>
+    </div>
+  );
 }
+
+Comment.propTypes = {
+  name: PropTypes.string,
+  comment: PropTypes.string,
+};
 
 export default Comment;

@@ -27,30 +27,9 @@
   border: 2px solid rgb(238, 238, 238);
 }
 
-.topRow {
-  display: flex;
-  width: 60%;
-
-  align-items: center;
-}
-
-.topRow h2:hover {
-  cursor: pointer;
-  color: #40004d;
-}
-
-.topRow img {
-  height: 40px;
-}
-
-.topRow h2 {
-  color: rgb(155, 155, 155);
-  font: 1.2em Roboto;
-  margin-left: 1em;
-}
-
 .bottomRow {
   display: flex;
+  align-items: center;
 }
 
 .comments,
@@ -76,4 +55,55 @@
   margin: 0px;
   margin-top: 10px;
   font-size: 1.3em;
+}
+
+.topRow {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.topRow h2:hover {
+  cursor: pointer;
+  color: #40004d;
+}
+
+.topRow img {
+  height: 40px;
+}
+
+.topRow h2 {
+  color: rgb(155, 155, 155);
+  font: 1.2em Roboto;
+  margin-left: 1em;
+}
+
+.bottomRow button {
+  color: white;
+  font-family: Roboto;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 10px;
+  margin-left: 20em;
+  display: flex;
+  justify-content: center;
+  width: 7em;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: rgb(112, 0, 177);
+  border: none;
+}
+
+.shareIcon {
+  margin-right: 5px;
+}
+
+.bottomRow button:hover {
+  filter: brightness(110%);
+}
+
+.commentSection {
+  border-top: 2px solid rgb(233, 233, 233);
+  margin-top: 1em;
+  width: 100%;
 }

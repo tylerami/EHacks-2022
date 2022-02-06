@@ -71,7 +71,7 @@ h3 {
   border: 2px solid rgb(230, 230, 230);
   outline: none;
 }
-.feed button {
+.pitch {
   width: 20%;
   height: 3em;
   color: white;
@@ -84,7 +84,7 @@ h3 {
   border: none;
 }
 
-.feed button:hover {
+.pitch:hover {
   filter: brightness(110%);
   cursor: pointer;
 }
