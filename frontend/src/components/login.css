@@ -1,11 +1,11 @@
-.logo {
+.loginLogo {
   width: 50%;
   margin: auto;
   display: flex;
   justify-content: start;
 }
 
-.logoImage {
+.loginLogoImage {
   height: 3em;
   margin-left: 10em;
 }
@@ -36,7 +36,7 @@
   height: 3em;
   color: white;
   border-radius: 12px;
-
+  margin-left: 4em;
   background-color: rgb(112, 0, 177);
   border: none;
 }

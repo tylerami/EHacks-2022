@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "./button";
-import "./login.css";
 import logo from "../logo.png";
+import "./login.css";
+
 import image from "../landing.png";
 
 import { useState } from "react";
@@ -10,11 +11,18 @@ import { useState } from "react";
 function Login(props) {
   const [register, setregister] = useState(true);
 
+  function registerUser(school, name, email, password) {
+    props.setUid("asdd");
+  }
+  function login(email, password) {
+    props.setUid("asdd");
+  }
+
   return register ? (
     <div className="main">
       <div className="navBar">
-        <div className="logo">
-          <img className="logoImage" alt="logo" src={logo}></img>
+        <div className="loginLogo">
+          <img className="loginLogoImage" alt="logo" src={logo}></img>
         </div>
         <div className="buttons">
           <button className="purpleMid" onClick={() => setregister(true)}>
@@ -41,7 +49,12 @@ function Login(props) {
           <input type="text" placeholder="Full Name"></input>
           <input type="text" placeholder="Email"></input>
           <input type="text" placeholder="Password"></input>
-          <button className="purpleLarge">Register</button>
+          <button
+            className="purpleLarge"
+            onClick={() => registerUser(null, null, null, null)}
+          >
+            Register
+          </button>
         </div>
         <div className="image"></div>
       </div>
@@ -49,8 +62,8 @@ function Login(props) {
   ) : (
     <div className="main">
       <div className="navBar">
-        <div className="logo">
-          <img className="logoImage" alt="logo" src={logo}></img>
+        <div className="loginLogo">
+          <img className="loginLogoImage" alt="logo" src={logo}></img>
         </div>
         <div className="buttons">
           <button className="greyMid" onClick={() => setregister(true)}>
@@ -70,7 +83,9 @@ function Login(props) {
           </h4>
           <input type="text" placeholder="Email"></input>
           <input type="text" placeholder="Password"></input>
-          <button className="purpleLarge">Login</button>
+          <button className="purpleLarge" onClick={() => login(null, null)}>
+            Login
+          </button>
         </div>
         <div className="image"></div>
       </div>
@@ -78,6 +93,8 @@ function Login(props) {
   );
 }
 
-Login.propTypes = {};
+Login.propTypes = {
+  setUid: PropTypes.func,
+};
 
 export default Login;
