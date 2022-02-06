@@ -21,7 +21,7 @@ router.post('/user', (req, res, next) => {
 
 // Get Pitch
 router.get('/pitch', (req, res, next) => {
-  User.find({}) // get data 
+  Pitch.find({}) // get data 
   .then((data)=>res.json(data)) // send data in json response
   .catch(next); // catch any errors
 });
@@ -36,20 +36,21 @@ router.post('/pitch', (req, res, next) => {
 
 // Comment on pitch
 router.put('/comment', (req, res, next) => {
-  const pitch = Pitch.findById(req.body.pitchID);  
-  pitch.comments.push({
-    author: req.body.author,
-    body: req.body.body,
-    date: "2022-02-05"
-  });
-  pitch.save()
+  Pitch.find({_id: req.body.pitchID})
+  .then(function(pitch){
+    pitch = pitch[0];
+    pitch.comments.push({
+      author: req.body.author,
+      body: req.body.body,
+      date: "2022-02-05"
+    })
+    pitch.save();
+    res.json({
+      message: "Success"
+    })
+  }).catch(next);
 });
 
 // Like Pitch
-router.put('/pitch', (req, res, next) => {
-  const pitch = Pitch.find({_id: req.body.pitchID});
-  pitch.likes += 1;
-  pitch.save()
-});
 
 module.exports = router;
