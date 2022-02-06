@@ -91,7 +91,13 @@ function Dashboard(props) {
           title="Mental Health App"
           body="An app where you get reminded about water intake, meditation, exercise etc..."
           likes={43}
-          comments={[]}
+          comments={[
+            { name: "Tyler Amirault", comment: "So cool!" },
+            {
+              name: "Jack Cochran",
+              comment: "Would love to discuss this with you",
+            },
+          ]}
         />
         <Post
           name="Jennifer Marshall"

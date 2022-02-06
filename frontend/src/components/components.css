@@ -119,9 +119,47 @@
 .newComment textarea {
   width: 100%;
   resize: none;
+  margin-top: 10px;
 }
 
 .newComment button {
   padding: 0px;
   margin: 0px;
+}
+
+.comment {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  align-items: center;
+}
+
+.row h2:hover {
+  cursor: pointer;
+  color: #40004d;
+}
+
+.row img {
+  height: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.comment p {
+  padding: 0px;
+  margin-top: 10px;
+}
+
+.row h2 {
+  color: rgb(155, 155, 155);
+  font: 0.8em Roboto;
+  padding: 0px;
+  margin: 0px;
+  margin-left: 1em;
 }

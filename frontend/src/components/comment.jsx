@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import pp from "../logo.png";
+import pp from "../pp.png";
 
 function Comment(props) {
   return (
-    <div>
+    <div className="comment">
       <div className="row">
         <img src={pp} /> <h2>{props.name}</h2>
       </div>
