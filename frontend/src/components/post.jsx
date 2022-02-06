@@ -19,7 +19,7 @@ function Post(props) {
   const [comment, setcomment] = useState("");
 
   function postComment(author, body, pitchID) {
-    Axios.put("http://pitch-start.herokuapp.com/api/comment", {
+    Axios.put("https://pitch-start.herokuapp.com/api/comment", {
       author: author,
       body: body,
       pitchID: pitchID,
@@ -34,7 +34,7 @@ function Post(props) {
 
   function likePost(name, pitchID) {
     setlikes(likes + 1);
-    Axios.put("http://pitch-start.herokuapp.com/api/pitch")
+    Axios.put("https://pitch-start.herokuapp.com/api/pitch")
       .then((response) => {})
       .catch((err) => {
         console.log(err.toString());
