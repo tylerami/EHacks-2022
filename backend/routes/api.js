@@ -55,5 +55,16 @@ router.put('/comment', (req, res, next) => {
 });
 
 // Like Pitch
+router.put('/like', (req, res, next) => {
+  Pitch.find({_id: req.body.pitchID})
+  .then(function(pitch){
+    pitch = pitch[0];
+    pitch.likes += 1
+    pitch.save();
+    res.json({
+      message: "Success"
+    })
+  }).catch(next);
+});
 
 module.exports = router;
