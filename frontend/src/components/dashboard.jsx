@@ -25,7 +25,7 @@ function Dashboard(props) {
   }
 
   function loadPitches() {
-    Axios.get("http://localhost:5000/api/pitch")
+    Axios.get("http://pitch-start.herokuapp.com/api/pitch")
       .then((response) => {
         console.log(response.data);
         setpostList(response.data.reverse());
@@ -40,7 +40,7 @@ function Dashboard(props) {
   }, []);
 
   function postPitch(name, title, body) {
-    Axios.post("http://localhost:5000/api/pitch", {
+    Axios.post("http://pitch-start.herokuapp.com/api/pitch", {
       author: name,
       title: title,
       body: body,

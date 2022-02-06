@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Button from "./button";
 import logo from "../logo.png";
 import "./login.css";
-
 import image from "../landing.png";
 
 import { useState } from "react";
