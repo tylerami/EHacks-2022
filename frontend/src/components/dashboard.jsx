@@ -91,28 +91,28 @@ function Dashboard(props) {
           title="Mental Health App"
           body="An app where you get reminded about water intake, meditation, exercise etc..."
           likes={43}
-          comments={23}
+          comments={[]}
         />
         <Post
           name="Jennifer Marshall"
           title="Mental Health App"
           body="An app where you get reminded about water intake, meditation, exercise etc..."
           likes={43}
-          comments={23}
+          comments={[]}
         />
         <Post
           name="Jennifer Marshall"
           title="Mental Health App"
           body="An app where you get reminded about water intake, meditation, exercise etc..."
           likes={43}
-          comments={23}
+          comments={[]}
         />
         <Post
           name="Jennifer Marshall"
           title="Mental Health App"
           body="An app where you get reminded about water intake, meditation, exercise etc..."
           likes={43}
-          comments={23}
+          comments={[]}
         />
       </div>
     </div>

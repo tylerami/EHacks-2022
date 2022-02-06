@@ -61,6 +61,7 @@ h3 {
   font-family: Roboto;
   border-radius: 1em;
   margin-bottom: 1em;
+  min-height: 4em;
   border: 2px solid rgb(238, 238, 238);
   resize: vertical;
   overflow-y: hidden;
@@ -123,4 +124,26 @@ h3 {
 .dropDown button:hover {
   filter: brightness(90%);
   cursor: pointer;
+}
+
+.commentSection button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-family: Roboto;
+  font-size: 1em;
+  color: blueviolet;
+}
+
+.commentSection button:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.commentSection {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding-top: 1em;
+  flex-direction: column;
 }

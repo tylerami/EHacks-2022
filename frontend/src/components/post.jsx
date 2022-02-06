@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import pp from "../pp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,9 +11,8 @@ import "./components.css";
 import Comment from "./comment";
 
 function Post(props) {
-  const [commentList, setcommentList] = useState(props.comments.map((val, key) => {
-      return <Comment name={} />
-  }));
+  const [commentList, setcommentList] = useState(props.comments);
+  const [showComments, setshowComments] = useState(false);
 
   function postComment(name, pitchID, comment) {}
 
@@ -29,7 +28,7 @@ function Post(props) {
       <div className="bottomRow">
         <div className="comments">
           <FontAwesomeIcon icon={faComment} />
-          <h4>{props.comments}</h4>
+          <h4>{commentList.length}</h4>
         </div>
         <div className="likes">
           <FontAwesomeIcon icon={faArrowUp} />
@@ -41,20 +40,22 @@ function Post(props) {
         </button>
       </div>
       <div className="commentSection">
-        {props.comments <= 0 ? (
-          <div> </div>
-        ) : commentList == [] ? (
-          <button>See the discussion...</button>
-        ) : (
+        {showComments ? (
           commentList.map((val, key) => {
-            return (
-              <Comment
-                name={val.name}
-                pp={val.pp}
-                comment={val.comment.length}
-              ></Comment>
-            );
+            return <Comment name={val.name} comment={val.comment} />;
           })
+        ) : (
+          <button onClick={() => setshowComments(true)}>
+            See the discussion...
+          </button>
+        )}
+        {showComments ? (
+          <div className="newComment">
+            <textarea placeholder="Add a comment..."></textarea>
+            <button className="pitch">Post comment</button>
+          </div>
+        ) : (
+          <div></div>
         )}
       </div>
     </div>

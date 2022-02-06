@@ -7,7 +7,7 @@ function Comment(props) {
       <div className="row">
         <img src={pp} /> <h2>{props.name}</h2>
       </div>
-      <p className="commentBody">{props.string}</p>
+      <p className="commentBody">{props.comment}</p>
     </div>
   );
 }
