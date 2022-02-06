@@ -1,0 +1,108 @@
+.dashboardNav {
+  width: 100%;
+  height: 10vh;
+  position: sticky;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  justify-content: space-evenly;
+  border-bottom: 2px solid rgb(238, 238, 238);
+}
+
+.dashboardNav button {
+  outline: none;
+  border: none;
+  background-color: rgb(255, 255, 255);
+}
+
+.logoDiv {
+  height: 30%;
+}
+
+.logo {
+  height: 100%;
+  width: auto;
+}
+
+h3 {
+  margin-right: 20em;
+  color: rgb(73, 73, 73);
+  font-family: Roboto;
+}
+
+.profileIcon {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 4em;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.profileIcon img {
+  height: 40%;
+  margin-right: 10px;
+  align-self: center;
+}
+
+.feed {
+  display: flex;
+  padding: 2em;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+.feed textarea {
+  background-color: white;
+  padding: 2em;
+  font-family: Roboto;
+  border-radius: 2em;
+  margin-bottom: 1em;
+  border: 2px solid rgb(238, 238, 238);
+  resize: vertical;
+  overflow-y: hidden;
+  width: 43%;
+}
+
+.feed textarea:focus {
+  border: 2px solid rgb(230, 230, 230);
+  outline: none;
+}
+.feed button {
+  width: 20%;
+  height: 3em;
+  color: white;
+  font-family: Roboto;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 12px;
+  margin-bottom: 3em;
+  background-color: rgb(112, 0, 177);
+  border: none;
+}
+
+.feed button:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+}
+
+.dropDown {
+  position: sticky;
+  display: flex;
+  margin-left: 20px;
+  flex-direction: column;
+}
+
+.dropDown button {
+  width: 10em;
+  padding: 10px;
+  border: 1px solid rgb(223, 223, 223);
+}
+
+.dropDown button:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+}
