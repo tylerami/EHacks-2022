@@ -9,14 +9,37 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./components.css";
 import Comment from "./comment";
+import Axios from "axios";
 
 function Post(props) {
   const [commentList, setcommentList] = useState(props.comments);
   const [showComments, setshowComments] = useState(false);
+  const [likes, setlikes] = useState(props.likes);
 
-  function postComment(name, pitchID, comment) {}
+  const [comment, setcomment] = useState("");
 
-  function likePost(name, pitchID) {}
+  function postComment(author, body, pitchID) {
+    Axios.put("http://localhost:5000/api/comment", {
+      author: author,
+      body: body,
+      pitchID: pitchID,
+    })
+      .then((response) => {
+        setcommentList([{ author: author, body: body }, ...commentList]);
+      })
+      .catch((err) => {
+        console.log(err.toString());
+      });
+  }
+
+  function likePost(name, pitchID) {
+    setlikes(likes + 1);
+    Axios.put("http://localhost:5000/api/pitch")
+      .then((response) => {})
+      .catch((err) => {
+        console.log(err.toString());
+      });
+  }
 
   return (
     <div className="mainCard">
@@ -30,9 +53,9 @@ function Post(props) {
           <FontAwesomeIcon icon={faComment} />
           <h4>{commentList.length}</h4>
         </div>
-        <div className="likes">
+        <div className="likes" onClick={() => likePost()}>
           <FontAwesomeIcon icon={faArrowUp} />
-          <h4>{props.likes}</h4>
+          <h4>{likes}</h4>
         </div>
         <button>
           <FontAwesomeIcon className="shareIcon" icon={faShareAlt} />
@@ -41,9 +64,11 @@ function Post(props) {
       </div>
       <div className="commentSection">
         {showComments ? (
-          commentList.map((val, key) => {
-            return <Comment name={val.name} comment={val.comment} />;
-          })
+          commentList
+            .map((val, key) => {
+              return <Comment key={key} name={val.author} comment={val.body} />;
+            })
+            .reverse()
         ) : (
           <button onClick={() => setshowComments(true)}>
             See the discussion...
@@ -51,8 +76,16 @@ function Post(props) {
         )}
         {showComments ? (
           <div className="newComment">
-            <textarea placeholder="Add a comment..."></textarea>
-            <button className="pitch">Post comment</button>
+            <textarea
+              onChange={(event) => setcomment(event.target.value)}
+              placeholder="Add a comment..."
+            ></textarea>
+            <button
+              onClick={() => postComment(props.user, comment, props.id)}
+              className="pitch"
+            >
+              Post comment
+            </button>
           </div>
         ) : (
           <div></div>
@@ -63,11 +96,13 @@ function Post(props) {
 }
 
 Post.propTypes = {
+  user: PropTypes.string,
   name: PropTypes.string,
   title: PropTypes.string,
   body: PropTypes.string,
   comments: PropTypes.array,
   likes: PropTypes.number,
+  id: PropTypes.string,
 };
 
 export default Post;

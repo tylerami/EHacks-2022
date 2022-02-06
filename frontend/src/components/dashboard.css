@@ -147,3 +147,8 @@ h3 {
   padding-top: 1em;
   flex-direction: column;
 }
+
+body {
+  min-height: 100%;
+  background-color: #fafafa;
+}
