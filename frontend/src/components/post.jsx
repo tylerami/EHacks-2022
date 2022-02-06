@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import pp from "../pp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faComment,
   faArrowUp,
-  faUpload,
+  faShareAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import "./components.css";
+import Comment from "./comment";
 
 function Post(props) {
+  const [commentList, setcommentList] = useState([]);
+
+  function postComment(name, pitchID, comment) {}
+
+  function likePost(name, pitchID) {}
+
   return (
     <div className="mainCard">
       <div className="topRow">
@@ -26,6 +33,27 @@ function Post(props) {
           <FontAwesomeIcon icon={faArrowUp} />
           <h4>{props.likes}</h4>
         </div>
+        <button>
+          <FontAwesomeIcon className="shareIcon" icon={faShareAlt} />
+          Connect
+        </button>
+      </div>
+      <div className="commentSection">
+        {props.comments <= 0 ? (
+          <div> </div>
+        ) : commentList == [] ? (
+          <button>See the discussion...</button>
+        ) : (
+          commentList.map((val, key) => {
+            return (
+              <Comment
+                name={val.name}
+                pp={val.pp}
+                comment={val.comment}
+              ></Comment>
+            );
+          })
+        )}
       </div>
     </div>
   );

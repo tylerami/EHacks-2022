@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import logo from "../logo.png";
 import pp from "../pp.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,10 +15,15 @@ import Post from "./post";
 function Dashboard(props) {
   const [tab, settab] = useState("Pitch Discussions");
   const [dropDown, setdropDown] = useState(false);
+  const [postList, setpostList] = useState([]);
 
   function logout() {
     props.setUid(null);
   }
+
+  useEffect(() => {}, []);
+
+  function postPitch(name, pitch) {}
 
   return (
     <div>
@@ -42,7 +47,7 @@ function Dashboard(props) {
       </div>
       <div className="feed">
         <textarea placeholder="Share your latest startup idea..."></textarea>
-        <button>PITCH IT </button>
+        <button className="pitch">PITCH IT </button>
         <Post
           name="Jennifer Marshall"
           title="Mental Health App"
@@ -78,6 +83,7 @@ function Dashboard(props) {
 
 Dashboard.propTypes = {
   setUid: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default Dashboard;
