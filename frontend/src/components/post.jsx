@@ -11,7 +11,9 @@ import "./components.css";
 import Comment from "./comment";
 
 function Post(props) {
-  const [commentList, setcommentList] = useState([]);
+  const [commentList, setcommentList] = useState(props.comments.map((val, key) => {
+      return <Comment name={} />
+  }));
 
   function postComment(name, pitchID, comment) {}
 
@@ -49,7 +51,7 @@ function Post(props) {
               <Comment
                 name={val.name}
                 pp={val.pp}
-                comment={val.comment}
+                comment={val.comment.length}
               ></Comment>
             );
           })
@@ -63,7 +65,7 @@ Post.propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
   body: PropTypes.string,
-  comments: PropTypes.number,
+  comments: PropTypes.array,
   likes: PropTypes.number,
 };
 

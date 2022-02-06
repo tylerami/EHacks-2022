@@ -11,6 +11,7 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import Post from "./post";
+import Axios from "axios";
 
 function Dashboard(props) {
   const [tab, settab] = useState("Pitch Discussions");
@@ -21,9 +22,45 @@ function Dashboard(props) {
     props.setUid(null);
   }
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    Axios.get("/api/pitch")
+      .then((response) => {
+        setpostList(
+          response.data.map((val, key) => {
+            return (
+              <Post
+                name={val.name}
+                title={val.title}
+                body={val.body}
+                comments={val.comments}
+                likes={val.likes}
+              />
+            );
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err.toString());
+      });
+  }, []);
 
-  function postPitch(name, pitch) {}
+  function postPitch(name, title, body) {
+    Axios.post("/api/pitch", {
+      name: name,
+      title: title,
+      body: body,
+      likes: 0,
+      comment: 0,
+    })
+      .then((response) => {
+        setpostList(
+          <Post name={name} title={title} body={body} comments={[]} likes={0} />
+        );
+      })
+      .catch((err) => {
+        console.log(err.toString());
+      });
+  }
 
   return (
     <div>
@@ -46,6 +83,7 @@ function Dashboard(props) {
         </button>
       </div>
       <div className="feed">
+        <input type="text" placeholder="Title your pitch..."></input>
         <textarea placeholder="Share your latest startup idea..."></textarea>
         <button className="pitch">PITCH IT </button>
         <Post

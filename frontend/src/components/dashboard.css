@@ -57,20 +57,38 @@ h3 {
 
 .feed textarea {
   background-color: white;
-  padding: 2em;
+  padding: 1em;
   font-family: Roboto;
-  border-radius: 2em;
+  border-radius: 1em;
   margin-bottom: 1em;
   border: 2px solid rgb(238, 238, 238);
   resize: vertical;
   overflow-y: hidden;
-  width: 43%;
+  width: 45%;
 }
 
 .feed textarea:focus {
   border: 2px solid rgb(230, 230, 230);
   outline: none;
 }
+
+.feed input {
+  background-color: white;
+  padding: 1em;
+  font-family: Roboto;
+  border-radius: 1em;
+  margin-bottom: 1em;
+  border: 2px solid rgb(238, 238, 238);
+  resize: vertical;
+  overflow-y: hidden;
+  width: 45%;
+}
+
+.feed input:focus {
+  border: 2px solid rgb(230, 230, 230);
+  outline: none;
+}
+
 .pitch {
   width: 20%;
   height: 3em;
